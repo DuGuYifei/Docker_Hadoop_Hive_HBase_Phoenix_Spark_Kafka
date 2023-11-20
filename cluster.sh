@@ -98,7 +98,7 @@ if [[ $1 = "install" ]]; then
   docker run -d --net hadoopnet --ip 172.20.1.2 --hostname node2 --add-host nodemaster:172.20.1.1 --add-host node3:172.20.1.3 --add-host hbase:172.20.1.9 --name node2 -it sciencepal/hadoop_cluster:spark
   docker run -d --net hadoopnet --ip 172.20.1.3 --hostname node3 --add-host nodemaster:172.20.1.1 --add-host node2:172.20.1.2 --add-host hbase:172.20.1.9 --name node3 -it sciencepal/hadoop_cluster:spark
   docker run -d --net hadoopnet --ip 172.20.1.5 -p 2181:2181 -p 9092:9092 --hostname edge --add-host nodemaster:172.20.1.1 --add-host node2:172.20.1.2 --add-host node3:172.20.1.3 --add-host psqlhms:172.20.1.4 --add-host edge:172.20.1.5 --add-host hbase:172.20.1.9 --name edge -it sciencepal/hadoop_cluster:edge 
-  docker run -d --net hadoopnet --ip 172.20.1.9 -p 16010:16010 -p 2182:2181 -p 16020:16020 --hostname hbase --add-host nodemaster:172.20.1.1 --add-host node2:172.20.1.2 --add-host node3:172.20.1.3 --add-host psqlhms:172.20.1.4 --add-host edge:172.20.1.5 --add-host hbase:172.20.1.9 --name hbase -it sciencepal/hadoop_cluster:hbase 
+  docker run -d --net hadoopnet --ip 172.20.1.9 -p 16010:16010 -p 2182:2181 -p 16020:16020 -p 16000:16000 --hostname hbase --add-host nodemaster:172.20.1.1 --add-host node2:172.20.1.2 --add-host node3:172.20.1.3 --add-host psqlhms:172.20.1.4 --add-host edge:172.20.1.5 --add-host hbase:172.20.1.9 --name hbase -it sciencepal/hadoop_cluster:hbase 
   #docker run -d --net hadoopnet --ip 172.20.1.7  -p 8888:8888 --hostname huenode --add-host edge:172.20.1.5 --add-host nodemaster:172.20.1.1 --add-host node2:172.20.1.2 --add-host node3:172.20.1.3 --add-host psqlhms:172.20.1.4 --name hue -it sciencepal/hadoop_cluster:hue
   
   # Format nodemaster
